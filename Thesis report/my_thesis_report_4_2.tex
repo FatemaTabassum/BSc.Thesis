@@ -1,0 +1,336 @@
+\documentclass[a4paper,12pt]{report}
+\usepackage{graphicx}
+\graphicspath{{images/}}
+\usepackage[width =150mm,top = 30mm,bottom=30 mm]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead[LO,CE]{}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage{natbib}
+\newcommand{\e}{\normfont}
+\font\b="SolaimanLipi:script=beng" at 12 pt
+%\renewcommand{\familydefault}{\sfdefault}
+\DeclareMathOperator{\Mr}{M_{\mathbb{R}}}
+\setlength{\parindent}{4em}
+\setlength{\parskip}{1em}
+
+\usepackage{graphicx}
+\usepackage{url}
+\graphicspath{ {figures/} }
+\usepackage{array}
+
+{
+\renewcommand{\listtablename}{Tables}
+}
+{
+\renewcommand{\listfigurename}{Figures}
+}
+
+
+\title{
+    {Sentiment Analysis on News Article}\\
+    {\large SHAHJALAL UNIVERSITY OF SCIENCE AND TECHNOLOGY}\\
+    {Department of Computer Science and Engineering}\\
+    \vspace{1.2in}
+    {\includegraphics[width=.4 \textwidth]{logo.png}}
+}
+\author{Fatema Tabassum Liza and Md. Najmuz Sakib \\
+Advisor: Husne Ara Chowdhury \\
+Designation: Assistant Professor }
+
+\date{18 October 2016}
+
+\begin{document}
+
+\maketitle
+\pagenumbering{roman}
+
+\chapter*{Certificate of Acceptance of the Thesis 16}
+The thesis entitled  "Sentiment analysis on news article" \\
+submited by the students \\
+\\
+1. Fatema Tabassum Liza(2011331032) \\
+2. Md. Najmuz Sakib(2011331039)  \\
+\\
+on \date{18 October 2016} \\
+is, hereby, accepted as the partial fulfillment of the requirements for the award of his/her/their Bachelor Degrees.
+
+\vspace{8cm} 
+
+\noindent\rule{4.1cm}{0.4pt} \hspace{2cm} \noindent\rule{4.5cm}{0.4pt}  \hspace{1.4cm} \noindent\rule{3cm}{0.4pt}  \\
+Head of the Department \hspace{1cm} Chairman, Examination Committee   \hspace{1cm} Supervisor
+    
+    \addcontentsline{toc}{chapter}{Certificate of Acceptance of the Thesis 16}
+\chapter*{Qualification Form of Bachelor Degree}
+    Student Name: Fatema Tabassum Liza(2011331032), Md. Najmuz Sakib(2011331039) \\
+    Thesis Title: Sentiment Analysis on News Article \\\\
+    This is to certify that the thesis submitted by the student named above in October 2016. It is qualified and approved by the Thesis Examination Committee.
+  
+\vspace{8cm} 
+
+\noindent\rule{4.1cm}{0.4pt} \hspace{2cm} \noindent\rule{4.5cm}{0.4pt}  \hspace{1.4cm} \noindent\rule{3cm}{0.4pt}  \\
+Head of the Department \hspace{1cm} Chairman, Examination Committee   \hspace{1cm} Supervisor
+
+\addcontentsline{toc}{chapter}{Qualification Form of Bachelor Degree}
+\chapter*{Abstract}
+    Sentiment analysis is the field of study that  uses  natural language processing, text analysis and computational linguistics to identify people’s emotions towards entities such as individuals, topics, services, products. The earliest and the basic task of sentiment analysis is classifying the polarity of a given text. Polarity refers to whether the expressed sentiment of the text is positive or negative based on some features. In this paper, a research work that has been conducted on news article for Bangla language. In the first phase of our thesis work we studied literature reviews,gathered necessary resources for our thesis work. In the second phase we have tried to apply different methodologies to identify sentiment of news articles in order to see the result.
+    
+\addcontentsline{toc}{chapter}{Abstract}
+
+\chapter*{Acknowledgements}
+    We wish to express our profound gratitude to our supervisor Husna Ara Chowdhury for introducing us to this research topic and providing her valuable guidance and unfailing encouragement throughout the course of the work. We would like to thank Afjal Hussain student of SUST(2010 Batch) and Sida Wang and Christopher D.Manning Computer Science in Stanford University. Besides, we would like to thank our teacher, staffs, friends, surroundings specially parents for their beloved support, inspiration and motivation.
+    \addcontentsline{toc}{chapter}{Acknowledgements}
+\clearpage
+\tableofcontents
+\listoftables
+\listoffigures
+
+
+\chapter{Introduction}
+
+Sentiment identification of text is a new area of Natural Language Processing. It has drawn much attention in recent times. Sentiment Recognition needs to perform several sub tasks such as tagging at document level, sentence level, word level, phrase level. Much of the research work has been performed on English language. Research work on Sentiment analysis in Bangla language also has been increasing day by day since web content is growing very rapidly in Bangla as well. Nowadays almost every Bangali people try to write their web content in Bangla. But little work on performing opinion mining or sentiment analysis has been conducted with respect to the ratio of increasing web content. Everyday we read news paper like- Prothom Alo, Kaler Kontho, Bangladesh Protidin and these newspapers are also available in web in Computer readable format. It is a growing need to attempt to summarize news and extract information from those unstructured data. \citep {das2010opinion} So In this paper, we have tried to identify opinion of newspaper editorial section as positive or negative according to the view of writer. 
+
+
+
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+
+\chapter{Sentiment Analysis Problem}
+\section{Why Sentiment Analysis}
+Opinions are very influential to almost all human activities in this information era. Public opinions about the products, service, consumers etc. are very crucial information that are needed for business and organizations to make progress. Before making a voting decision people want to know other opinions about political candidates, consumer wants to know about the product before buying it, employee wants to  review their employer candidates before assigning them. So individuals and organizations are increasingly using the content of social media like- forum discussions, reviews, micro-blogs, blogs, twitter, Facebook, comments and postings in social networking site for decision making. There was little research before 2000 in the field of NLP or linguistics. Since 2000 the filed has become more important because of availability of huge opinionated web content. \citep{liu2012sentiment}
+\section{Why Sentiment Analysis on Newspaper}
+Newspaper is a reflection of what is happening in our current world. News on editorial pages express opinion of different writers, celebrities on different topic. 
+In today’s world, all the information need to be represented using statistics. Today, People want to know which topic in the world is carrying the most positive sentiment and which is carrying most negative sentiment.  In order to represent news as statistical data according to their sentiment (good or bad), we need to create an automated system which will categorize news and summarize them. Our aim is to identify which topic most of the people are talking about and what the sentiment they are giving about this topic is. As no such work in Bangla is available, we want to build a system using topic based sentiment analysis on news corpus. We would give more priority to Editorial Section of newspaper. 
+
+\section{Different Levels of Sentiment Analysis}
+Sentiment Analysis is a very popular research problem because of the need of our real-life applications. Researches have been conducted at different levels according to our needs. Research work on Sentiment Analysis has been conducted mainly at three levels:
+\begin{itemize}
+    \item Document Level: This level of Opinion Analysis identifies if a whole document expresses a positive or negative sentence. Identifying product review is document level Sentiment Analysis. \citep{jagtapsentence}
+    \item Sentence Level: Sentence level identifies if a whole sentence is positive or negative. It is always refered as Subjectivity Classification.\citep{das2009subjectivity}
+    \item Entity and Aspect Level: This level finds opinion of text along with its topic or target  \citep{das2010topic}.
+\end{itemize}
+
+
+\chapter{  Sentiment Classification}
+
+Traditional Text classification usually identifies topic of a document such as politics, technology, sports. Topic Related words are the key features of this kind of classification. In Sentiment Analysis opinion related word like angry, great, sad, amazing, happy, excellent etc. are the key features of classification.[bing liu] Sentiment Classification  can be performed by mainly these following 3 methods.
+
+
+\section{Sentiment Classification Using Supervised Learning}
+
+Existing supervised learning method such as support vector machines (SVM),[] Naïve Bayes, Logistic Regression, Decision Tree etc. Pang, Lee and Vaithyanathan(2002)  \citep{pang2002thumbs} was the first to take this approach to classify movie reviews into positive, and negative.It was shown that using bag of words or unigram as features in classification performed well with NB or SVM.The key for classifying sentiment is the engineering of a set of effective features. Some of the features are given below:
+\begin{itemize}
+    \item Terms and their frequency: unigram (individual words) or bag of words, n-grams are important features which require frequency counting of words.
+    \item Parts of Speech: The parts of speech of each word can be important feature.Becuase some POS are important for sentiment identification such as adjectives, adverb etc.
+    \item Sentiment words and phrases: Sentiment words are adjectives, adverbs but nouns and verbs can also express sentiment.
+    \item Sentiment shifters: These expressions use to change sentiment orientation.Negation words are important valence shifter.
+    \item Syntactic dependency: Dependency of words that are generated by dependency trees are also impoprtant features.
+    
+\end{itemize}
+    
+\section{Sentiment Classification Using Unsupervised Learning}
+\subsection{SA using syntactic patterns}
+Sentiment words, phrases and some syntactic patterns  are used to classify text in unsupervised manner.[turney 2002] .It performs classification based on POS tags.
+The algorithm is described in following steps:
+\begin{itemize}
+    \item Step 1:If the POS tags of two consecutive words satifies the Table 3.2 then those two word are extracted.For example,"She sings song very well",sing song is extracted as it satisfies pattern numbered one.
+    \item Step 2: The sentiment orientation of the extracted phrases and words are computed by the pointwise mutual information(PMI) measure:
+    \begin{equation}
+        PMI(term1,term2) = log2(Pr(term1 ^\wedge term2)/Pr(term1)Pr(term2))
+    \end{equation}
+    Here,$Pr(term1 ^\wedge  term2)$ is the actual co-occurrence probability of term1 and term2, and Pr(term1)Pr(term2) is the co-occurrence probability of the two terms if they are statistically independent.The sentiment orientation(SO) of a phrase is computed based on its association with the positive reference word "excellent" and negative reference word "poor":
+    \begin{equation}
+        SO(phrase) = PMI(phrase,"excellent") - PMI(phrase,"poor")
+    \end{equation}
+    \item Given a review,average SO of all phrases is computed and the review is classified as positive if the average SO is positive and negative otherwise.The table below which is taken from \citep{turney2002thumbs} shows patterns of POS tags.
+\end{itemize}
+%\begin{center}
+\begin{table}[h]
+\centering
+     \begin{tabular}{||c |c|| c|| c||} 
+  
+     \hline
+     No. & First word & Second words & Third word(not extracted) \\ [0.5ex] 
+     \hline\hline
+     1 & JJ & NN or NNS & anything \\ 
+     \hline
+     2 & RB, RBR, or RBS & JJ & not NN or NNS \\
+     \hline
+     3 & JJ & JJ & not NN or NNS  \\
+     \hline
+     4 & NN or NNS & JJ & not NN or NNS \\
+     \hline
+     5 & RB, RBR, RBS & VB, VBD, VBN, VBG & anything \\ [1ex] 
+     \hline
+    \end{tabular}
+
+\caption{Patterns of POS tags for extracting two-word phrases}
+\label{tab:table1}
+\end{table}
+%\end{center}
+\subsection{Word Embeddings}
+Word Embedding is a set of collection that comprises of language modeling and feature extraction techniques in natural language processing (NLP). Words from the vocabulary are mapped to vectors in a low dimensional space relative to the vocabulary size. Neural networks are used in this kind of method. \citep{wikipidea}
+\\
+Word2ec is such a model which can produce word embeddings. Word2vec is was created by Google. Since then it has become an important algorithm for researchers. Researchers have been analyzing this algorithm since it has mane advantages compared to Latent Semantic Analysis. Furthermore to get a better result word embeddings requires several 100s of data.
+\section{Sentiment Analysis with Semi Supervised Learning algorithm}
+Annotating large corpus data with Supervised Learning is time consuming, unsupervised learning need huge amount of data. To resolve these problems researchers also tried some Semi Supervised Learning method which works as a supervised and unsupaervised method at a time.Such a work is \citep{li2010employing}.
+
+\chapter{Literature Reviews}
+
+Opinion extraction is an important task in this web era.After opinion extraction,opinion summarization is also needed.Most researchers mainly has focused on opinion identification,subjectivity analysis etc.
+\section{Sentiment Analysis in English Language}
+\citep{chambers2015identifying} has identified political Sentiment between Nation States with social media using several semi supeervised learning and by learning contextual sentiment of the data.
+
+Researchers have extracted thumbs up or thumbs down by using unsupervised machine learning.
+\citep{turney2002thumbs}
+\citep{liu2012sentiment}
+Bing Liu has described in this paper about all the past works, different method of Sentiment classificiations such as supervised, unsupervised, origin of sentiment Analysis, different domain of sentiment analysis like movie reviews, political data, news article etc.
+\citep{zhang2015neural} has described a neural network model for open domain targeted sentiment.
+
+\section{Sentiment Analysis in Bangla Language}
+Sentiment Analysis of Bangla has evolved over time. Much of the work has been done by the Indian author Amitava, Sivaji \citep{Das, Amitava}.They have collected data, found subjectivity of a sentence , \citep{das2011dr}, \citep{das2010sentiwordnet} are such of their work.They have brought Sentiment Analysis in Bangla to a higher level.
+Our seniors have also done some work in SA during their undergraduate thesis. They have tested bangla text with cosine similarities using tf-idf, naive bayes with POS tagger, stemmer. They have also done preprocessing of data. But still SA in Bangla language in Bangladesh needs more importance to get a better result through which people in Bangladesh can get the real benefit of it.
+
+
+
+\chapter{Our Methodologies}
+We have tried to acquire necessary resources. We also have tried to apply different methodologies to complete this phase of thesis.
+\section{Resource Acquisition}
+To initialize a Sentiment Analysis it is always required to acquire sentiment lexicon and annotated data for machine learning.The details of resource acquisition are described below.
+\subsection{Corpus}
+Bangla is the national language of Bangladesh, second language in India,fifth popular language in the World. Sentiment classification of text has been performed mainly in English till date.But since web content is increasing in bangla, The resources and data are increasing thus giving researchers chances to analyze and extract information from these data.News text can be divided in two types:(1) news reports that express factual information and (2) Articles that are printed out in editorial section often contains opinion of corresponding writer in many different topic.So we have identified bangla newspaper 
+{\b "প্রথম আলো"'}s
+%\selectlanguage{english}
+ editorial section as corpus.We have collected 1000 editorial section's news articles as training corpus.We have annotated the data manually as positive(1) or negative(-1).News article that expresses hope, happiness, gratitude, patriotism, affection to novel etc. is annotated as positive label.News article that expresses hate,frustration,complaint etc is annotated as negative label.
+ \\
+ %\begin{narrow}[left=2cm,right=2cm]
+%\setlength{\linewidth}{0.5in}
+
+{\b "সৈয়দ শামসুল হক লিখছেন। ক্যানসারের সঙ্গে বাস করছেন, সেই বাস্তবতার কাছে নতি স্বীকার না করে তিনি লিখেই চলেছেন। হাসপাতালের বিছানায় শুয়েই তিনি শতাধিক কবিতা লিখেছেন। একাধিক গল্প লিখেছেন। গল্প লেখেন ডিকটেশন দিয়ে, আনোয়ারা সৈয়দ হক, আরেকজন শক্তিমান লেখক আমাদের, শ্রুতিলেখন করেন। সেই সব গল্পের ভাষাভঙ্গিতে সৈয়দ শামসুল হকীয় মুদ্রা নির্ভুলভাবে মুদ্রিত থাকে। সৈয়দ শামসুল হককে বিশেষ করে আমার গুরু বা শিক্ষক বলে মান্য করি আমি। আমি তখন উচ্চমাধ্যমিক পাস করে ঢাকার বাংলাদেশ প্রকৌশল বিশ্ববিদ্যালয়ে ভর্তি হয়ে ক্লাস শুরুর জন্য অপেক্ষা করছি, রংপুর শহরে। এই সময় সৈয়দ শামসুল হক এলেন রংপুরে, অভিযাত্রিকের অনুষ্ঠান করতে, উঠলেন রংপুর সার্কিট হাউসে। আমি বিশাল একটা ক্যাসেট প্লেয়ার নিয়ে গেলাম তাঁর কাছে, তাঁর সাক্ষাৎকার নেব। তাঁকে বললাম, আমি বিচিত্রায় প্রকাশিত আপনার ‘হৃৎ কলমের টানে’ কলামটা নিয়মিত পড়ি। তাতে আপনি বলেন, নতুন লেখকদের কর্তব্য হলো বইপড়া। পড়ার বাইরে আপনি নতুন লেখকদের উদ্দেশে আর কোনো উপদেশ দেবেন কি না। সৈয়দ শামসুল হক ডান হাতের তিন আঙুল তুলে বাঁ হাতের দুই আঙুল দিয়ে ধরে গুনতে লাগলেন, ‘পড়ার বাইরে নতুন লেখকদের উদ্দেশে আমার তিনটে উপদেশ আছে—পড়ো, পড়ো এবং পড়ো।’ তিনি বললেন, ‘অনেকেই বলে, দেশে ভালো বই পাওয়া যায় না, আমি তাঁদের বলি, আমাদের মধ্যে কজন মাইকেল মধুসূদন দত্ত পুরোটা পড়েছেন? আমাদের মধ্যে কজন বঙ্কিমচন্দ্র পুরোটা পড়েছেন?’সেই সাক্ষাৎকারে তিনি বললেন, লেখকের পড়া আর পাঠকের পড়া এক নয়। পাঠক পড়বেন, উপভোগ করবেন। লেখক প্রথমে পড়বেন পাঠকের মতো, তারপর তিনি থামবেন, ভাববেন, কেন উপভোগ করলাম, কৌশলটা কী? কেন রবীন্দ্রনাথ কোনো গল্পে একটাও সংলাপ ব্যবহার করেননি, আর কেনই-বা একটা গল্প শুধু সংলাপ দিয়েই তৈরি করেছেন।এরপরে যে কতবার হক ভাইয়ের কাছে গেছি, কত ইন্টারভিউ নিয়েছি।একবার তিনি বলেছিলেন, আমি ইতিহাসকে দু দশ বছরের নিরিখে দেখি না, মহাকালের নিরিখে দেখি। একটা বছরে, দশটা বছরে দেশের চলা শ্লথ হতে পারে, মনে হতে পারে, আমরা পিছিয়ে যাচ্ছি, কিন্তু সামগ্রিক বিচারে মানুষ এগোবে, সভ্যতা এগোবে, দেশ এগোবে। আমি তাঁর এই কথা কোনো দিনও ভুলি না। মাঝেমধ্যে দেশ নিয়ে, সমাজ নিয়ে, রাষ্ট্র নিয়ে, এমনকি মানুষের অভব্য আচরণ, কারণহীন করুণাহীন নিম্নরুচির আঘাতে মর্মাহত হই। ভাবি, নাহ, আর হলো না, আমাদের উন্নতি নেই, আমরা বোধ হয় আর সভ্য হব না, আমরা খারাপ বলেই আমরা সুশাসন পাওয়ারও যোগ্য নই। তখন সৈয়দ শামসুল হকের ওই কথা আমার মনে আসে, দু চার দশ বছরের নিরিখে ইতিহাসকে বিচার কোরো না।এই তো আগস্ট ২০১৬ সালের কথা। প্রথম আলোতে পনেরোই আগস্টে বঙ্গবন্ধুকে নিয়ে সংখ্যা বের করতে হবে—শোক ও শ্রদ্ধা। সৈয়দ শামসুল হক তখন লন্ডনে চিকিৎসাধীন। তাঁকে ফোন করলাম। কবিতা দিন। তিনি কবিতা ই-মেইলে পাঠালেন। পড়ে অভিভূত হলাম। কলমে জাদু না থাকলে এই রকম লেখা সম্ভব না। এরপর শুরু হলো এসএমএস চালাচালি। তিনি নিচের দিক থেকে দশম লাইনের একটা শব্দ বদলাতে চান। প্রথমে একটা বিকল্প শব্দ দিলেন। পরে সেটাও পাল্টালেন। বললেন, এটা দাও, ছন্দও সুন্দর হবে। আমি বললাম, হক ভাই, আপনার কাছে আমাদের শেখার আছে। এই শরীর, এই স্বাস্থ্য নিয়ে সুদূর লন্ডন থেকে আপনি কবিতার একটা শব্দ নিয়ে কী খুঁতখুঁতই না করছেন।তিনি আমাকে আবারও উপদেশ দিলেন, গুরুবাক্য হিসেবে যা আমি সর্বদা মনে রাখার চেষ্টা করব। বললেন, লেখালেখির ব্যাপারে লেখকের অবশ্যই ‘প্যাশন’ থাকতে হবে, এটা তুমি কখনোই বিসর্জন দিতে পারো না।সৈয়দ শামসুল হকের এই যে প্যাশন, সেটা তাঁর রোগশয্যাতেও অটুট আছে। অটুট আছে জিগীষাও। জয় করার ইচ্ছা। তিনি লিখছেন, লেখাই তো অস্ত্র। . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    এখন অরিগন বিশ্ববিদ্যালয়ের গবেষক। জার্মানির ম্যাক্স প্লাংক ইনস্টিটিউট, ওয়াশিংটন স্টেট ইউনিভার্সিটি থেকে পড়েছেন। তিনি গত পরশু কিশোর আলো ও গণিত অলিম্পিয়াডের কিশোরদের সঙ্গে কথা বলছিলেন। একজন তাঁকে প্রশ্ন করল, এলিয়েন কি আছে? দীপঙ্কর তালুকদার বিজ্ঞানের মানুষ, প্রমাণ ছাড়া তিনি কথা বলবেন না। তিনি বললেন, এটা নিয়ে যুক্তরাষ্ট্র প্রচুর গবেষণা করেছে, টাকা খরচ করেছে, এলিয়েন পায়নি। এলিয়েন তো পাওয়া যাবে না, সংকেত পাওয়া যেতে পারত। এখনো যায়নি।স্টিফেন হকিং মজার মানুষ। কিছুদিন আগে ইংল্যান্ডে তাঁকে বাচ্চারা জিজ্ঞেস করেছিল, জায়ান মালিক (জনপ্রিয় ব্যান্ড তারকা) ওয়ান ডিরেকশন (গানের দল) ছেড়ে দিয়েছেন, অন্য কোনো জগতে কি জায়ান মালিক সেই ব্যান্ডে ফিরতে পারেন না?স্টিফেন হকিং বলেছেন, ‘আরেকটা গ্যালাক্সিতে হয়তো আরেকটা ওয়ান ডিরেকশন আছে, জায়ান মালিক সেখানে তার ব্যান্ড ছেড়ে দেয়নি।’অন্য গ্রহ থেকে এলিয়েনরা এসে পৃথিবী ধ্বংস করবে কি না। স্টিফেন হকিং জবাব দেন, তার চেয়েও বড় শঙ্কা হলো পৃথিবীতে যে পরিমাণে আণবিক বোমা আছে, তা পৃথিবীর ধ্বংস হয়ে যাওয়ার জন্য যথেষ্ট। তিনি বলেন, ভুল করে কোনো দুর্বল দেশের পারমাণবিক বোমার সুইচে কোনো পাগল বা সন্ত্রাসী ঢুকে পড়ে সুইচ টিপে দিলেই পৃথিবী শেষ। কারণ, সেটাকে প্রতিরোধ করতে সব দেশই তার তার সুইচ টিপে দেবে। হকিং বলেন, তাই আমাদের উচিত সব সরকারকে চাপ দেওয়া অস্ত্র কমানোর জন্য।তিনি বলেন, একটা অসুস্থ কৌতুক আছে, পৃথিবীতে এলিয়েন আসে না। কারণ, কোনো এলিয়েন প্রজাতি যখন খুব উন্নতি করে, তখন তারা নিজেরাই নিজেকে ধ্বংস করে। তিনি বলেন, আমি আশা করি, পৃথিবীর ক্ষেত্রে তা ঘটবে না।সৈয়দ শামসুল হক বলেন, আমি অচিকিৎস্য রকমের আশাবাদী। আর গাব্রিয়েল গার্সিয়া মার্কেস বলেন, মানুষের পরাজয় মেনে নিতে আমি অস্বীকার করি। কিংবা হেমিংওয়ের মতো আমরা বলতে পারি, মানুষকে ধ্বংস করা যেতে পারে, কিন্তু পরাজিত করা যাবে না।আমরা সবাই মরণশীল। আমাদের হাতের অবশিষ্ট দিনও তো গোনা। যে কটা দিন বাঁচি, আমাদেরও তো ভালো ভালো কাজই করা উচিত। ‘সংসার মাঝে কয়েকটি সুর, রেখে দিয়ে যাব করিয়া মধুর, দু-একটি কাঁটা করি দিব দূর, তারপর ছুটি নিব।’ একটা হলেও যেন কাঁটা দূর করতে পারি! }
+\\
+\\
+This news  article clearly indicates positive sentiment since it talks about {\b সভ্যতা,  শ্রদ্ধা, উপভোগ} etc. These words are sentiment bearing words in Bangla language.So we have identified it as positive news.
+\\
+
+	{\b "জি, ঘটনা এমনই দাঁড়াচ্ছে। বন ধ্বংস করবেন, নদী নষ্ট করবেন, কৃষিজমিকে বদলে ফেলবেন—আর বলবেন উন্নয়ন হচ্ছে, সেটি আর হচ্ছে না। আন্তর্জাতিক অপরাধ আদালত (আইসিসি) এখন পরিবেশ ধ্বংসকেও মানবতার বিরুদ্ধে অপরাধ হিসেবে দেখা শুরু করেছে। পরিবেশ ধ্বংস ও ভূমি দখলের হোতাদের বিচারের জন্য নেদারল্যান্ডসের হেগে অবস্থিত এই আদালতের দরজা এখন খোলা।কাজেই স্যুট পরা কথিত ‘ভালো’ লোকদেরও মানবতার বিরুদ্ধে অপরাধের কাঠগড়ায় দাঁড়াতে হতে পারে। প্রথমবারের মতো পৃথিবীর সর্বোচ্চ অপরাধ আদালত প্রকৃতি ধ্বংস ও ভূমি দখলকে মানবতার বিরুদ্ধে অপরাধের তালিকাভুক্ত করছে (নিউইয়র্ক টাইমস, ২৯ সেপ্টেম্বর, ২০১৬)।এ​ই সে​েপ্টম্বরে আইসিসির প্রসিকিউটরের দপ্তর থেকে প্রকাশিত কৌশলপত্রে বিষয়টা পরিষ্কার করা হয়েছে। কৌশলপত্রের ‘মামলা বাছাই ও অগ্রাধিকারকরণ’ অনুচ্ছেদে বলা হয়েছে, কোনো রাষ্ট্র চাইলে আন্তর্জাতিক আইনের অধীনে প্রাকৃতিক সম্পদের বেআইনি আত্মসাৎ, ভূমি দখল অথবা পরিবেশ ধ্বংসের বিচারে আইসিসি সহযোগিতা দেবে। (http://preview.tinyurl.com/h6usdfu)।আইসিসির এই সিদ্ধান্তের পেছনেও গণ–আন্দোলনের ইতিহাস আছে। কম্বোডিয়ার কিছু মানুষ আইসিসিতে একটি মামলা দায়ের করেন। তাঁদের অভিযোগ, ২০০২ সাল থেকে কম্বোডিয়ার সরকার, সামরিক বাহিনী, পুলিশ এবং আদালত সেখানকার ৩ লাখেরও বেশি মানুষকে বলপূর্বক উচ্ছেদ করে আসছে।অনুরূপ ঘটনা বাংলাদেশেও ঘটতে যাচ্ছিল ২০০৬ সালে। দিনাজপুরের ফুলবাড়ীতে একটি বিদেশি কোম্পানির মাধ্যমে বিপজ্জনক উন্মুক্ত পদ্ধতিতে কয়লাখনি করার জন্য প্রায় ২ লাখ মানুষ উচ্ছেদের শিকার হতে যাচ্ছিল। অবশ্য স্থানীয়দের রক্তক্ষয়ী আন্দোলন তৎকালীন বিএনপি সরকারকে পিছু হটতে বাধ্য করে। মানবতার বিরুদ্ধে অপরাধী বলতে এত দিন আমরা যুদ্ধাপরাধ, গণহত্যা, মানব ও মাদক পাচারকারীদের বুঝতাম। এগুলো চিহ্নিত অপরাধ। এগুলোর পক্ষে সাফাই গাওয়াও কঠিন। কিন্তু যাঁদের হাতে রক্তের দাগ নেই, যাঁরা নিজ হাতে একটি টিকটিকিও হয়তো হত্যা করেননি, তাঁদের অপরাধ ধরা কঠিন। যুদ্ধে নিরীহ মানুষকে হত্যা কিংবা যুদ্ধের নিয়ম ভঙ্গ করাকে যুদ্ধাপরাধ বলে। কিন্তু করপোরেট কোম্পানির প্রধান নির্বাহী অথবা সরকারি ক্ষমতার অধিকারীদের কলমের এক খোঁচায় পৃথিবীর ভয়ানক ক্ষতি হয়ে যেতে পারে। ক্ষতি হয়ে যেতে পারে জনগণের এবং পরিবেশের অস্তিত্বের।. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+এর ২০০ ফুটের মধ্যে মেট্রোরেল হলে শালিমার গার্ডেনসহ মোগল আমলের ১১টি স্থাপনার ক্ষতি হবে। ভারত সরকারও সম্প্রতি ৩০০ কোটি ডলারের একটি হীরক উত্তোলন প্রকল্প সাময়িকভাবে স্থগিত করে দিয়েছে। উদ্দেশ্য, বনের বাঘের চলাচলের পথ অবাধ রাখা ও পরিবেশ রক্ষা। আপাতভাবে বেঁচে যায় ভারতের মধ্যপ্রদেশের ছাত্তারপুর বনাঞ্চলের ৯৭১ হেক্টর এলাকার মোট ৪ লাখ ৯২ হাজার গাছ।বাংলাদেশের সুন্দরবনও বিশ্ব ঐতিহ্যের অংশ। আমাদের চীনের প্রাচীরের মতো কিছু নেই। আমাদের আছে সুন্দরবনের মতো প্রাকৃতিক রক্ষাপ্রাচীর। সুন্দরবন অফুরান সম্ভাবনাময় প্রাণসম্পদের ভান্ডার। এর জন্য নিশ্চিতভাবে ক্ষতিকর রামপাল প্রকল্প নিয়ে এগোনোর  আগে তাই পুনরায় ভাবা উচিত। সুন্দরবনের কোনো বিকল্প নেই।বৈশ্বিক আইনব্যবস্থার দর্শন দিনকে দিন গভীর ও ব্যাপক হচ্ছে। মানুষ, সমাজ ও প্রকৃতির পক্ষে নতুন নতুন আইন প্রণীত হচ্ছে। আইন থাকলে আজ বা কাল অপরাধীকে আদালতের কাঠগড়ায় দাঁড় করানোর সম্ভাবনা থাকে। সুতরাং ভাবিয়া করিও কাজ, করিয়া ভাবিও না।}
+\\
+\\
+Since this corpus contains negative word like {\b ধ্বংস, আত্মসাৎ, বিপজ্জনক} etc. negative words we have annotated this corpus as negative.
+ 
+\subsection{POS Tagger and Stemmar}
+We have collected POS tagger and stemmar from our senior brothers who have worked on Natural Language Processing in the previous years.
+\subsection{Opposite Words:}We collected all corpus of \textbf{Biporit} words from SUST's previous year's Undergraduate Thesis team.\textbf{Biporit} words were used to shift the context of a sentence to extract the original meaning of sentence which would increase the performance of our system.
+Some examples of \textbf{Biporith} words are {\b সকর্মক  ==> অকর্মক,   প্রাজ্ঞ ==> অজ্ঞ, আলো ==> আঁধার } etc. 
+
+
+\section{Data Preprocessing and Normalizing}
+Though We have collected our data from Prothom alo site in the 'utf-8' encoding there was other problem related Bangla text.We had to collect all the text data leaving all the html tag from the news corpus.Also some other preprocessings have also be performed that are listed below:
+
+
+\begin{itemize}
+    \item \textbf{Negation Handling: }Negation handling is an important valance shifter in sentiment analysis.It opposes the context of an entire sentence.Bangla valence shifter words are {\b না , নি , নাই } etc. \\
+   This valance shifter words play an important role in SA.\\{\b আমি ভাল নাই । - } This sentence indicates a negative meaning. One {\b "না"} changes everything. \\
+   {\b আমি খারাপ আছি । -} This sentence also expresses same meaning as above.
+   So, we have replaced word that include  {\b না , নি , নাই } with oposite word. Thus we removed negation words  {\b না , নি , নাই }. For this technique we used the following steps -
+   \\
+  \begin{itemize}
+  \item Detect {\b না , নি , নাই } in the sentence.
+  \item If the previous word of {\b না , নি , নাই } is a verb or adjective then take oposite word of that verb or adjective and remove {\b না , নি , নাই } .
+  \item If the previous word is not verb or adjective but the next word is verb or adjective the apply previous rule.
+  \item If both previous and next word is not verb or adjective then make the result negative.
+  \end{itemize}
+
+    \item \textbf{Stopwords: }Removing stopwords often improves performance. So we have removed all the stopwords from our corpus. Examples of stopwords are -{\b থেকে, করে, হয়, সঙ্গে , এবং} etc. 
+
+\end{itemize}
+\section{Features Extraction}
+Since we are using supervised machine learning algorithm we need to extract features.
+We have used following features to make the SVM  perform  well.
+\begin{itemize}
+    \item \textbf{Term Frequency:} Term frequency is the frquency of occuring each word in a particular document.We extract all the vocabulary of our training corpus and then counted frequency of each word in each document.
+    \item \textbf {Stemming:} Root words often improves performance of a model.Because words in a sentence that express sentiment or opinion information may be in inflected forms.Stemming is important for these inflected words so that they can be searched in appropriate lists. So we stemmed each word of our vocabulary. But Bangla root word finding is still a research problem. Because Bangla root word finding is problematic because of the structure of bangla language.The following table shows some forms of bangla words that need to find root words in order to identify true meaning.
+   \item \textbf{POS} tagging: Many research activities such as \citep{hatzivassiloglou2000effects},\citep{chesley2006using} have proved that adjective,adverb,noun and verb are the main opinion bearing words.So POS tagging is an important part of sentiment analaysis task.We have \textbf{POS} tagged each word in our corpus to identify the different POS tag and count the frequency accordingly.
+   \item \textbf{Bi-gram:} We have used bi-gram along with uni gram  to improve the performance of our model.
+   \end{itemize}
+
+The features that also perform significantly in \textbf{SA} \citep{das2009subjectivity} and that we have not implemented yet completely  but still currently working on them are:
+
+   \begin{itemize}
+       \item \textbf{Sentiment Lexicon: } English Sentiwordnet(A lexical resources that is available publicly) contains all the opinion bearing word of English and also contains the probability expressing how much positive a word is or how negative it is. We have downloaded SentiWordnet from online and trying to translate each word into its corresponding bangla word along with their probability.Because finding opinion bearing word with appropriate probability would enhance the performance of our model.
+       \item \textbf{Functional Words: }Though removing stopwords improves performance some researchers showed that functional words like {\b কিন্তু, এবং, অথবা, বরং etc.} helps to understand syntactic pattern of an opinionated  sentence.\citep{das2010opinion}.
+   \end{itemize}
+    
+\section{Methodologies}
+We have applied following supervised machine learning algorithm to train our data.
+
+\subsection{Multinomial Naïve Bayes}
+Bayes' Theorem is a theorem of probability.It was stated by the Reverend Thomas Bayes.
+In multinomial Naïve Bayes document is represented by a feature vector with integer elements whose value is the frequency of that word in the document.
+Classification of document is often represented as a bag of words.It is a very simple text classifier which does not need the order of words.[2]\\
+Assuming D is a news article and its class is given by C. C is the set of classes. There are two classes in our case. C = positive and C = negative. 
+
+
+
+\[ P(c_j) = \frac{document(C=c_j)}{N_d{}_o{}_c}\]
+\[P(w_i|c_j) = \frac{count(w_i,c_j)}{\sum_{w \epsilon V} count(w,c_j)}\]
+%\[P("fantastic"|positive)=\frac{count("fantastic",positive)}
+%{\sum_{w \epsilon V} count(w,positive)}=0\]
+\[c_M{}_A{}_P = argmax_c( P(c) \prod_i P(x_i|c)\]
+
+\[P(w_i|c) = \frac{count(w_i,c)+1}{\sum_{w \epsilon V} (count(w,c)+1)}=\frac{count(w_i,c)+1}{\sum_{w \epsilon V} count(w,c)+|V|}\]
+
+\subsection{Support Vector Machine}
+
+\citep{basu2003support} \textbf{SVM} classification was originally proposed by \citep{vapnik2013nature}  \citep{cortes1995support}.It was designed to find separation between hyperplanes defined by two-class of data.
+Since the goal is to measure the margin of separation of the data, \textbf{SVM} can operate in fairly large feature sets.\\
+Research has shown that \textbf{SVM} can scales well it has good performance on large data sets.\citep{kwok1998automated}.In contrast to conventional text classification \textbf{SVM} has pperformed very well and has proved to be robust eliminating the need of expensive parameter tuning  \citep{joachims1998text}. The main task of Sentiment Analysis like any other text classification is to transform each document into number. For text classification word frequency,their semantics,contextual relation etc. are the main features. To transform document we have to manipulate the strings of characters that comprise the documents.Information Retrieval research \citep{joachims1998text}suggests that orders of words represent minor importance to many task and word's stem perform well as representation unit.We have reperesented each document as a deature vector for machine learning task.
+
+
+\newpage
+\begin{figure}
+\centering
+\includegraphics[width = 14cm]{methodDiagram.png}
+\caption{Our Model Overview}
+\label{fig:Overview of our system}
+\end{figure}
+\newpage
+
+
+\subsection{Implementation Method}
+We have used  Java \citep{java}, python nltk \citep{nltk}, scikit-learn \citep{feature}, scikit-learn-svm \citep{svm} etc. packages. We have made our dataset in java and feed those data in python in order to compute the result.
+
+\section{Result}
+At first we feed NB with our training data without any preprocessing to see the outcome. The model gave output with almost 56\% accuracy. Then we tried to
+feed the model with all the features. Then the accuracy of the model became 61\%.But when we applied SVM to our training corpus it gave a rise to the accuracy to 73\%.We also feed our model to Max.Ent which is also known as Logistic regression and got accuracy approximately 69\%.
+\\
+The accuracy is not very high but since each news article contains huge information, extracting and processing those information becomes harder. In this kind of problem more features are needed for a better result.
+
+\newpage
+\begin{figure}
+\centering
+\includegraphics[width = 14cm]{comparisonGraph.png}
+\caption{Comparison Graph}
+\label{fig:Comparison among the different methods}
+\end{figure}
+\newpage
+
+
+
+\section{Conclusion}
+Though we annotated the news data very cautiously the annotation of data was a bit of noisy and confusing. Because there are such news which contains positive words as much as negative words. So, annotating those data was a bit problem for us. In this case, we annotated the data according to our insight.Example of such confusing news is,
+\\
+{\b "খাদিজাকে নিয়ে আশার কথা শোনা গেছে। খাদিজা চোখ মেলেছেন, তাঁর হাত-পাও সাড়া দিচ্ছে। খাদিজার ওপর হামলার ভিডিওটি যাঁরা দেখেছেন, যেভাবে তাঁকে ক্রমাগত চাপাতি দিয়ে কুপিয়ে নিস্তেজ করে ফেলা হয়েছে, তাতে অনেকেই আশা ছেড়ে দিয়েছিলেন। আর ফেসবুকে স্ক্রল করতে গিয়ে যাঁরা তাঁর ক্ষতবিক্ষত মাথার ছবিটি দেখে ফেলেছেন, তাঁদের তো নিজেদেরই দম বন্ধ হওয়ার কথা। শুরুতে আশা রাখতে পারেননি চিকিৎসকেরাও। অবস্থা এতটাই খারাপ ছিল যে এ অবস্থা থেকে বেঁচে থাকার সম্ভাবনা ছিল মাত্র ৫ ভাগ। সেই খাদিজা এখন আমাদের আশা জাগাচ্ছেন। সিলেটের ওসমানী মেডিকেল কলেজ ও স্কয়ার হাসপাতালের চিকিৎসকদের ধন্যবাদ, যাঁদের জন্য আজ আমরা খাদিজাকে নিয়ে আশার কথা শুনতে পারছি।চিকিৎসকেরা সফল হোক, খাদিজা আপনি বেঁচে উঠুন! ফিরে আসুন একদম আগের মতো স্বাভাবিক জীবনে। চিকিৎসকদের চেষ্টা আর দেশবাসীর দোয়া ও শুভকামনায় আপনি আবার ফিরে আসুন। আপনাকে শুধু আপনার মা-বাবা, পরিবারে লোকজন বা বন্ধুবান্ধব নন, আপনাকে আমরা পুরো দেশের মানুষ কেউই হারাতে চাই না। আপনি চোখ মেলেছেন, আমরা আপনার উঠে দাঁড়ানোর অপেক্ষায়! পরীক্ষা দিয়ে বের হওয়ার পর আপনার ওপর হামলা হয়েছে। আপনাকে বাকি পরীক্ষাগুলো দিতে হবে, দ্বিতীয় বর্ষ শেষ করে বিএ ফাইনাল পরীক্ষা দিতে হবে। আপনি এগোবেন, আমরাও সামনে এগোব!যিনি আপনাকে কুপিয়ে মেরে ফেলতে চেয়েছিলেন, সেই ছাত্রলীগ নেতা বদরুল বা এমন যাঁরা আমাদের সমাজে রয়েছেন, তাঁদের জবাব দেওয়ার জন্য আপনার বেঁচে থাকা জরুরি। যে ক্ষমতা ও যে পৌরুষ বদরুলকে এতটা বর্বর বানিয়েছে, তাঁর মুখে চুনকালি দেওয়ার জন্যও আমরা আপনাকে আমাদের পাশে চাই। তনু, রিসা বা নিতু মণ্ডলকে আমরা বাঁচাতে পারিনি।খুনি বা খুনিদের পেছনের যখন ক্ষমতার ছোঁয়া বা গন্ধ থাকে, তখন বিচার কোথায় গিয়ে যেন পালায়! তনু খুন হয়েছেন কুমিল্লা সেনানিবাসের ভেতরে, কিন্তু তাঁর কোনো খুনিকে আমরা পাই না। মিতুর খুনের কোনো কূলকিনারা হয় না। বিচার-ন্যায়বিচার—এসবের ওপর আমাদের ভরসাই যে উঠতে বসেছে! বদরুল ধরা পড়েছেন, আশা ও ধারণা করি, ছাত্রলীগের এই নেতাকে ছাড় দেওয়ার কাজটি অন্তত সহজ হবে না। আপনার ওপর বর্বরতার বিচারের দাবিতে দেশবাসী সরব রয়েছে। আপনি বেঁচে থাকলে তা তনু বা মিতুসহ সব খুনের বিচারের দাবিতে সোচ্চার সেই জনগণকে আরও সাহস জোগাবে।
+}
+
+Because of these noisy data accuracy has decreased a little bit.Moreover,  classifying this huge document needs more insight of data which needs to extract more features. Acquiring those features needs to manipulate more data which needs higher performing system.
+\section{Future Work}
+Newspaper editorial section contains opinion of writers, politicians, lawyers, Teachers, people of other professions and general people. Summarizing those information to observe how many positive or negative opinions are printed out  everyday would give a good insights of our current socio-economic status. We could also analyze people's opinion of particular topic. This research is our first step to our goal. We tend to resolve current problems of our thesis. We would like to extend this research work by extracting more features and applying different classifiers to improve the system.
+
+\bibliographystyle{dinat}
+\bibliography{mybib}
+
+\end{document}
